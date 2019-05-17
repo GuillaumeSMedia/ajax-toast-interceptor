@@ -1,2 +1,3 @@
 # ajax-toast-interceptor
-Intercepts AJAX responses and displays relevant 'toast' notifications.
+
+Intercepts AJAX / XMLHttpRequest responses and toast and displays relevant 'toast' notifications.
