@@ -1,6 +1,12 @@
+[![npm version](https://badge.fury.io/js/ajax-toast-interceptor.svg)](https://badge.fury.io/js/ajax-toast-interceptor) [![Known Vulnerabilities](https://snyk.io/test/github/GuillaumeSMedia/ajax-toast-interceptor/badge.svg?targetFile=package.json)](https://snyk.io/test/github/GuillaumeSMedia/ajax-toast-interceptor?targetFile=package.json)
+
 # Ajax Toast Interceptor
 
 Intercepts AJAX / XMLHttpRequest responses from your back-end and displays relevant 'toast' notifications, so you can focus on the useful code :)
+
+## Why?
+
+Because displaying javascript notifications to your visitors is a repetitive task that needn't be. Simply format your back-end response the right way, and this package will display the notification to your visitors.
 
 ## Installation
 
