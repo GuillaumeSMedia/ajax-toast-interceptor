@@ -1,6 +1,6 @@
 # Ajax Toast Interceptor
 
-Intercepts AJAX / XMLHttpRequest responses and displays relevant 'toast' notifications.
+Intercepts AJAX / XMLHttpRequest responses from your back-end and displays relevant 'toast' notifications.
 
 ## Installation
 
@@ -10,14 +10,54 @@ Intercepts AJAX / XMLHttpRequest responses and displays relevant 'toast' notific
 
 Simply return a correctly formatted JSON response from your API to have messages displayed in the client's browser via [iziToast](https://github.com/marcelodolza/iziToast).
 
+## axios integration
+
+```javascript
+axios
+    .get('/user?ID=12345')
+    .then(function(response) {
+        // Success notification message are handled by ajax toast interceptor
+        // Your code goes here
+        console.log(response);
+    })
+    .catch(function(error) {
+        // Error notification message are handled by ajax toast interceptor
+        // Your code goes here
+        console.log(error);
+    });
+```
+
+### jQuery integration
+
+```javascript
+$.ajax({
+    url: '/save-user-profile',
+    method: post,
+})
+    .done(function(response) {
+        // Success notification message are handled by ajax toast interceptor
+        // Your code goes here
+        console.log(response);
+    })
+    .fail(function(error) {
+        // Error notification message are handled by ajax toast interceptor
+        // Your code goes here
+        console.log(error);
+    });
+```
+
+If you only want to display a notification message (error or success), you can skip the `done` and `fail` callbacks altogether.
+
 ### Success (HTTP response codes 200 -> 399) :
+
+Example:
 
 ```json
 {
-    "flash": true, // Displays the response in a toast notification (default: null | options: false, true)
-    "title": "Success", // Optional string (default: Success)
-    "message": "The action was successful", // The notification text to display (possible values: string | array)
-    "callback": "reload" // (optional, one option: reload) Reloads the page
+    "flash": true,
+    "title": "Success",
+    "message": "The action was successful",
+    "callback": "reload"
 }
 ```
 
@@ -27,8 +67,8 @@ Simply return a correctly formatted JSON response from your API to have messages
 
 ```json
 {
-    "flash": true, // Displays the response in a toast notification (default: true |options: false, true)
-    "message": "Something went wrong" // Optional string | array: the notification text to display
+    "flash": true,
+    "message": "Something went wrong"
 }
 ```
 
@@ -39,8 +79,34 @@ Also displays classic HTTP errors (404, 500...).
 
 ```json
 {
-    "flash": true, // Displays the response in a toast notification (options: false, true)
-    "message": "Something went wrong", // The notification text to display (possible values: string | array)
-    "errors": ["Name field is required", "Email field is invalid"] // (optional array of errors)
+    "flash": true,
+    "message": "Validation failed for the following fields:",
+    "errors": ["Name field is required", "Email field is invalid"]
 }
 ```
+
+## Ajax response content
+
+| Option name | Description                                                                                                               | Values          | Default                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------ |
+| `flash`     | Should a 'toast' notification be displayed?                                                                               | true \| false   | - HTTP success: none <br />- HTTP errors: `true`       |
+| `title`     | _(optional)_ Title of the success notification. Only available for success response codes for now.                        | string          | - HTTP success: 'Success' <br />- HTTP errors: 'Error' |
+| `message`   | The message (content) of the toast notification                                                                           | string \| array | none                                                   |
+| `errors`    | _(optional)_ Displays each element of the array as a list. Only available for 422 validation errors for now.              | array           | none                                                   |
+| `callback`  | _(optional)_ Reloads the page instead of displaying a success message. Only available for success response codes for now. | 'reload'        | none                                                   |
+
+## Screenshots
+
+Soon...
+
+## Todo
+
+-   [ ] Improve the documentation
+-   [ ] Accept an array of `errors` for error response codes other than 422
+-   [ ] Allow `callback: 'reload'` option for error response codes
+-   [ ] Automated tests
+-   [ ] Add screenshots
+
+## Contributions
+
+Pull requests are welcome :)
