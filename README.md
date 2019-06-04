@@ -14,10 +14,7 @@ Simply return a correctly formatted JSON response from your API to have messages
 
 ```javascript
 axios
-    .post('/save-user-profile', {
-        firstName: 'John',
-        lastName: 'Doe',
-    })
+    .post('/save-user-profile', { firstName: 'John', lastName: 'Doe' })
     .then(function(response) {
         // Success notification handled by ajax toast interceptor
         // Your code goes here
@@ -36,6 +33,7 @@ axios
 $.ajax({
     url: '/save-user-profile',
     method: post,
+    data: { name: 'John', location: 'Doe' },
 })
     .done(function(response) {
         // Success notification handled by ajax toast interceptor
@@ -49,19 +47,17 @@ $.ajax({
     });
 ```
 
-If you only want to display a notification message (error or success), you can skip the `done` and `fail` callbacks altogether.
+Sometimes you only need a notification message (error or success) without any other actions. In that case you can skip the `done` and `fail` callbacks altogether:
 
 ```javascript
-axios.post('/save-user-profile', {
-    firstName: 'John',
-    lastName: 'Doe',
-});
+axios.post('/save-user-profile', { firstName: 'John', lastName: 'Doe' });
 ```
 
 ```javascript
 $.ajax({
     url: '/save-user-profile',
     method: post,
+    data: { name: 'John', location: 'Doe' },
 });
 ```
 
