@@ -14,14 +14,17 @@ Simply return a correctly formatted JSON response from your API to have messages
 
 ```javascript
 axios
-    .get('/user?ID=12345')
+    .post('/save-user-profile', {
+        firstName: 'John',
+        lastName: 'Doe',
+    })
     .then(function(response) {
-        // Success notification message are handled by ajax toast interceptor
+        // Success notification handled by ajax toast interceptor
         // Your code goes here
         console.log(response);
     })
     .catch(function(error) {
-        // Error notification message are handled by ajax toast interceptor
+        // Error notification handled by ajax toast interceptor
         // Your code goes here
         console.log(error);
     });
@@ -35,18 +38,32 @@ $.ajax({
     method: post,
 })
     .done(function(response) {
-        // Success notification message are handled by ajax toast interceptor
+        // Success notification handled by ajax toast interceptor
         // Your code goes here
         console.log(response);
     })
     .fail(function(error) {
-        // Error notification message are handled by ajax toast interceptor
+        // Error notification handled by ajax toast interceptor
         // Your code goes here
         console.log(error);
     });
 ```
 
 If you only want to display a notification message (error or success), you can skip the `done` and `fail` callbacks altogether.
+
+```javascript
+axios.post('/save-user-profile', {
+    firstName: 'John',
+    lastName: 'Doe',
+});
+```
+
+```javascript
+$.ajax({
+    url: '/save-user-profile',
+    method: post,
+});
+```
 
 ### Success (HTTP response codes 200 -> 399) :
 
