@@ -1,6 +1,6 @@
 {
     "name": "ajax-toast-interceptor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Intercepts AJAX / XMLHttpRequest responses and toast and displays relevant 'toast' notifications.",
     "keywords": [
         "ajax",
