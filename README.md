@@ -1,6 +1,6 @@
 # Ajax Toast Interceptor
 
-Intercepts AJAX / XMLHttpRequest responses from your back-end and displays relevant 'toast' notifications.
+Intercepts AJAX / XMLHttpRequest responses from your back-end and displays relevant 'toast' notifications, so you can focus on the useful code :)
 
 ## Installation
 
