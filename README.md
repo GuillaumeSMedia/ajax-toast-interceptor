@@ -63,7 +63,7 @@ $.ajax({
 
 ### Success (HTTP response codes 200 -> 399) :
 
-Example:
+Example of success response received from the back-end:
 
 ```json
 {
@@ -78,6 +78,8 @@ Example:
 
 ### Error (HTTP response codes 400+) :
 
+Example of error response received from the back-end:
+
 ```json
 {
     "flash": true,
@@ -89,6 +91,8 @@ Example:
 Also displays classic HTTP errors (404, 500...).
 
 ### Validation errors (HTTP response code 422) :
+
+Example of validation error response received from the back-end:
 
 ```json
 {
@@ -107,6 +111,10 @@ Also displays classic HTTP errors (404, 500...).
 | `message`   | The message (content) of the toast notification                                                                           | string \| array | none                                                   |
 | `errors`    | _(optional)_ Displays each element of the array as a list. Only available for 422 validation errors for now.              | array           | none                                                   |
 | `callback`  | _(optional)_ Reloads the page instead of displaying a success message. Only available for success response codes for now. | 'reload'        | none                                                   |
+
+## Cross-domain
+
+Cross-domain / cross-origin requests & responses are ignored.
 
 ## Screenshots
 
